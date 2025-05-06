@@ -1,0 +1,25 @@
+<app-header [appName]="appName"></app-header>
+
+<mat-sidenav-container class="d-flex h-100">
+  <mat-sidenav-content class="d-flex w-100">
+    <mat-nav-list
+      class="nav-list mat-elevation-z6 bg-white"
+      *ngIf="userService.userInfoObs$ | async"
+    >
+      <a
+        mat-list-item
+        [routerLink]="nav.route"
+        routerLinkActive="navActive"
+        *ngFor="let nav of sideNavItems"
+      >
+        <mat-icon class="mr-2">{{ nav.icon }}</mat-icon
+        >{{ nav.label }}</a
+      >
+    </mat-nav-list>
+    <main class="w-100">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-footer></app-footer>
